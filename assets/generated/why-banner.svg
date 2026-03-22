@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 420">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2d5b44"/>
+      <stop offset="1" stop-color="#d19a4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="420" fill="url(#g2)"/>
+  <g fill="#fff" opacity="0.86">
+    <circle cx="220" cy="185" r="52"/><circle cx="340" cy="188" r="52"/><circle cx="460" cy="190" r="52"/><circle cx="580" cy="188" r="52"/><circle cx="700" cy="186" r="52"/>
+    <rect x="168" y="240" width="600" height="110" rx="36"/>
+  </g>
+  <g fill="#ffffff" opacity="0.33" font-family="Arial, sans-serif">
+    <text x="64" y="380" font-size="28">AI IMAGE PLACEHOLDER: WHY JOIN BANNER</text>
+  </g>
+</svg>

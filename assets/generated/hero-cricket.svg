@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffbf66"/>
+      <stop offset="0.45" stop-color="#e89943"/>
+      <stop offset="1" stop-color="#0f2f24"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.72" cy="0.2" r="0.4">
+      <stop offset="0" stop-color="#ffe9a8" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffe9a8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+  <rect y="620" width="1600" height="280" fill="#204a37"/>
+  <rect x="560" y="520" width="480" height="250" fill="#8b5a35" opacity="0.9"/>
+  <g fill="#f2f2f2" opacity="0.9">
+    <circle cx="980" cy="430" r="56"/>
+    <rect x="920" y="490" width="120" height="180" rx="36"/>
+    <rect x="868" y="510" width="56" height="36" rx="10"/>
+    <rect x="1040" y="510" width="56" height="36" rx="10"/>
+    <rect x="1000" y="390" width="220" height="24" rx="12" transform="rotate(23 1000 390)" fill="#d8a04a"/>
+  </g>
+  <g fill="#ffffff" opacity="0.28" font-family="Arial, sans-serif">
+    <text x="72" y="808" font-size="30">AI IMAGE PLACEHOLDER: HERO ACTION SHOT</text>
+  </g>
+</svg>
