@@ -1,16 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#3f6f55"/>
-      <stop offset="1" stop-color="#1d3a2e"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#527f62"/>
+      <stop offset="1" stop-color="#1f3f31"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="700" fill="url(#g)"/>
-  <g fill="#f4f4f4" opacity="0.9">
-    <circle cx="260" cy="300" r="70"/><circle cx="420" cy="300" r="70"/><circle cx="580" cy="300" r="70"/><circle cx="740" cy="300" r="70"/><circle cx="900" cy="300" r="70"/>
-    <rect x="190" y="370" width="780" height="180" rx="70"/>
+  <rect width="1200" height="700" fill="url(#bg)"/>
+  <rect y="500" width="1200" height="200" fill="#1f4937"/>
+  <g fill="#ffffff" opacity="0.9">
+    <circle cx="220" cy="300" r="62"/><circle cx="360" cy="286" r="58"/><circle cx="500" cy="304" r="64"/>
+    <circle cx="660" cy="290" r="62"/><circle cx="800" cy="306" r="64"/><circle cx="940" cy="292" r="60"/>
+    <rect x="158" y="360" width="860" height="176" rx="66"/>
   </g>
-  <g fill="#ffffff" opacity="0.3" font-family="Arial, sans-serif">
-    <text x="56" y="650" font-size="28">AI IMAGE PLACEHOLDER: TEAM HUDDLE</text>
+  <g fill="#d9a152" opacity="0.86">
+    <rect x="768" y="300" width="180" height="20" rx="10" transform="rotate(16 768 300)"/>
   </g>
 </svg>

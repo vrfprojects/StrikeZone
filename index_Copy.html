@@ -68,7 +68,7 @@ a { text-decoration: none; color: inherit; }
 .nav-links { display: flex; align-items: center; gap: 2px; }
 .nav-links a {
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 16px; font-size: 15px; font-weight: 500;
+  padding: 8px 16px; font-size: 21px; font-weight: 500;
   color: rgba(255,255,255,0.82); border-radius: 7px;
   transition: all 0.15s;
 }
@@ -89,7 +89,7 @@ a { text-decoration: none; color: inherit; }
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
-  padding: 10px 14px; font-size: 16px; font-weight: 500;
+  padding: 10px 14px; font-size: 21px; font-weight: 500;
   color: rgba(255,255,255,0.85); border-radius: 8px;
 }
 .mobile-menu a:hover { background: rgba(255,255,255,0.07); color: #fff; }
@@ -97,7 +97,9 @@ a { text-decoration: none; color: inherit; }
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, #001A13 0%, #003B2F 50%, #004D3A 100%);
+  background:
+    linear-gradient(90deg, rgba(6,26,20,0.9) 0%, rgba(6,26,20,0.75) 36%, rgba(6,26,20,0.2) 100%),
+    url('assets/generated/hero-cricket.svg') center/cover no-repeat;
   min-height: 62vh;
   display: flex; align-items: flex-start;
   position: relative; overflow: hidden;
@@ -118,7 +120,7 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-inner {
   max-width: 1440px; margin: 0 auto; width: 100%;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center;
 }
 .hero-tag {
   display: inline-flex; align-items: center; gap: 7px;
@@ -187,7 +189,7 @@ a { text-decoration: none; color: inherit; }
 .hero-stats { display: flex; gap: 32px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); }
 .hero-stat-val { font-family: var(--serif); font-size: 46px; font-weight: 600; color: #fff; line-height: 1; }
 .hero-stat-lbl { font-size: 16px; color: rgba(255,255,255,0.78); margin-top: 6px; font-weight: 500; }
-.hero-right { display: flex; flex-direction: column; gap: 16px; }
+.hero-right { display: none; }
 .hero-card {
   background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
   border-radius: var(--r-lg); padding: 22px 24px;
@@ -234,37 +236,18 @@ a { text-decoration: none; color: inherit; }
 .section-dark .section-tag { background: rgba(255,209,0,0.12); color: var(--gold); border-color: rgba(255,209,0,0.2); }
 .section-stone { background: var(--stone); }
 
-.about-panel {
-  background: var(--dark);
-  border-radius: var(--r-xl);
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.photo-panel {
+  border: 1px solid #d0bb92;
+  border-radius: 0;
+  overflow: hidden;
+  background: #d7c09a;
+}
+.photo-panel img {
+  width: 100%;
   height: 100%;
+  min-height: 320px;
+  object-fit: cover;
 }
-.ap-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.ap-stat {
-  text-align: center; padding: 18px 12px;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09);
-  border-radius: var(--r);
-}
-.ap-num { display: block; font-family: var(--serif); font-size: 42px; font-weight: 600; color: var(--gold); line-height: 1; margin-bottom: 6px; }
-.ap-lbl { font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
-.ap-quote {
-  border-left: 3px solid var(--gold); padding: 14px 18px;
-  background: rgba(255,209,0,0.06); border-radius: 0 var(--r) var(--r) 0;
-  font-style: italic; color: rgba(255,255,255,0.82); font-size: 15px; line-height: 1.7;
-}
-.ap-quote i { color: var(--gold); margin-right: 6px; opacity: 0.7; }
-.ap-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.ap-badges > div {
-  display: flex; align-items: center; gap: 8px;
-  font-size: 13px; color: rgba(255,255,255,0.8);
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-  padding: 10px 12px; border-radius: 8px;
-}
-.ap-badges i { color: var(--gold); font-size: 13px; flex-shrink: 0; }
 
 /* ── STATS BAND ── */
 .stats-band { background: var(--green); padding: 52px 56px; }
@@ -276,6 +259,16 @@ a { text-decoration: none; color: inherit; }
 
 /* ── WHY JOIN ── */
 .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+.why-banner {
+  border: 1px solid #ccb48d;
+  margin: 0 auto 26px;
+  overflow: hidden;
+}
+.why-banner img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
 .why-card {
   background: var(--warm-white); border: 1px solid var(--stone-mid);
   border-radius: var(--r-lg); padding: 28px 24px;
@@ -305,18 +298,19 @@ a { text-decoration: none; color: inherit; }
   border: 1px solid var(--stone-mid);
   transition: all 0.2s; cursor: default;
 }
-.age-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-.age-hd { padding: 28px 16px 20px; text-align: center; position: relative; overflow: hidden; }
-.age-hd::before {
-  content: '\f091';
-  font-family: 'FontAwesome';
-  font-size: 80px;
-  position: absolute;
-  top: -8px; right: 4px;
-  opacity: 0.1;
-  line-height: 1;
-  pointer-events: none;
+.age-thumb {
+  width: 100%;
+  height: 112px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--stone-mid);
 }
+.age-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.age-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.age-hd { padding: 20px 16px 16px; text-align: center; }
 .age-badge {
   display: inline-block; font-size: 12px; font-weight: 700;
   letter-spacing: 0.08em; text-transform: uppercase;
@@ -384,6 +378,19 @@ a { text-decoration: none; color: inherit; }
 }
 .impact-text { font-size: var(--text-body); color: rgba(255,255,255,0.85); line-height: 1.65; }
 .impact-text strong { color: #fff; }
+
+.rules-media {
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  min-height: 360px;
+}
+.rules-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+}
 
 /* ── FEES ── */
 .fees-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; margin-bottom: 40px; }
@@ -775,23 +782,8 @@ textarea.finput { min-height: 120px; resize: vertical; }
         </div>
       </div>
       <div class="reveal">
-        <div class="about-panel">
-          <div class="ap-numbers">
-            <div class="ap-stat"><span class="ap-num">5</span><span class="ap-lbl">Age groups</span></div>
-            <div class="ap-stat"><span class="ap-num">3+</span><span class="ap-lbl">Seasons run</span></div>
-            <div class="ap-stat"><span class="ap-num">140+</span><span class="ap-lbl">Players</span></div>
-            <div class="ap-stat"><span class="ap-num">56</span><span class="ap-lbl">Matches/season</span></div>
-          </div>
-          <div class="ap-quote">
-            <i class="fa fa-quote-left"></i>
-            Every young cricketer leaves StrikeZone with a digital career record, real match experience, and a love for the game.
-          </div>
-          <div class="ap-badges">
-            <div><i class="fa fa-trophy"></i> Impact Player format</div>
-            <div><i class="fa fa-bar-chart"></i> Digital career profiles</div>
-            <div><i class="fa fa-mobile"></i> Live scoring for parents</div>
-            <div><i class="fa fa-gift"></i> Personalised T-shirt</div>
-          </div>
+        <div class="photo-panel">
+          <img src="assets/generated/about-team.svg" alt="Youth players celebrating with staff">
         </div>
       </div>
     </div>
@@ -804,7 +796,10 @@ textarea.finput { min-height: 120px; resize: vertical; }
     <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto 48px">
       <div class="section-tag"><i class="fa fa-star"></i> Why join StrikeZone</div>
       <h2 class="section-title">More than just <em>a game</em></h2>
-      <p class="section-sub one-line-desktop" style="margin:0 auto 48px">Five reasons why StrikeZone is the best place for your child to grow as a cricketer and as a person.</p>
+      <p class="section-sub one-line-desktop" style="margin:0 auto">Five reasons why StrikeZone is the best place for your child to grow as a cricketer and as a person.</p>
+    </div>
+    <div class="why-banner reveal">
+      <img src="assets/generated/why-banner.svg" alt="Smiling junior players in team banner image">
     </div>
     <div class="why-grid">
       <div class="why-card reveal">
@@ -852,6 +847,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
     <div class="age-grid reveal">
 
       <div class="age-card">
+        <div class="age-thumb"><img src="assets/generated/age-u9.svg" alt="U9 players training and playing"></div>
         <div class="age-hd age-u9">
           <div class="age-badge">Introductory</div>
           <div class="age-group">U9</div>
@@ -869,6 +865,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
       </div>
 
       <div class="age-card">
+        <div class="age-thumb"><img src="assets/generated/age-u11.svg" alt="U11 players in development match"></div>
         <div class="age-hd age-u11">
           <div class="age-badge">Development</div>
           <div class="age-group">U11</div>
@@ -886,6 +883,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
       </div>
 
       <div class="age-card">
+        <div class="age-thumb"><img src="assets/generated/age-u13.svg" alt="U13 players in action"></div>
         <div class="age-hd age-u13">
           <div class="age-badge">Competitive</div>
           <div class="age-group">U13</div>
@@ -903,6 +901,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
       </div>
 
       <div class="age-card">
+        <div class="age-thumb"><img src="assets/generated/age-u15.svg" alt="U15 players batting in competitive fixture"></div>
         <div class="age-hd age-u15">
           <div class="age-badge">Competitive</div>
           <div class="age-group">U15</div>
@@ -921,6 +920,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
       </div>
 
       <div class="age-card">
+        <div class="age-thumb"><img src="assets/generated/age-u18.svg" alt="U18 elite players during weekend match"></div>
         <div class="age-hd age-u18">
           <div class="age-badge">Premier</div>
           <div class="age-group">U18</div>
@@ -989,21 +989,8 @@ textarea.finput { min-height: 120px; resize: vertical; }
         </div>
       </div>
 
-      <div class="impact-card">
-        <div class="impact-tag"><i class="fa fa-bolt"></i> Signature rule</div>
-        <div class="impact-title">The Impact Player format</div>
-        <div class="impact-item">
-          <div class="impact-num">1</div>
-          <div class="impact-text"><strong>Second-chance batting:</strong> Each team nominates one Impact Player who can bat again if dismissed — turning every wicket into a tactical decision.</div>
-        </div>
-        <div class="impact-item">
-          <div class="impact-num">2</div>
-          <div class="impact-text"><strong>Extended bowling:</strong> The nominated bowler can bowl up to 6 overs — perfect for deploying your best bowler in a tight finish.</div>
-        </div>
-        <div class="impact-item">
-          <div class="impact-num">3</div>
-          <div class="impact-text"><strong>U15 &amp; U18 only:</strong> The rule applies at older age groups, giving younger players time to master the base game first.</div>
-        </div>
+      <div class="rules-media reveal">
+        <img src="assets/generated/rules-side.svg" alt="Junior cricketer with bat beside league rules">
       </div>
     </div>
   </div>
