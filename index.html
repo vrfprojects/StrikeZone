@@ -97,7 +97,9 @@ a { text-decoration: none; color: inherit; }
 
 /* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, #001A13 0%, #003B2F 50%, #004D3A 100%);
+  background:
+    linear-gradient(135deg, rgba(0,26,19,0.86) 0%, rgba(0,59,47,0.80) 45%, rgba(0,77,58,0.72) 100%),
+    url('assets/stike_boy.png') center top / cover no-repeat;
   min-height: 62vh;
   display: flex; align-items: flex-start;
   position: relative; overflow: hidden;
@@ -266,13 +268,58 @@ a { text-decoration: none; color: inherit; }
 }
 .ap-badges i { color: var(--gold); font-size: 13px; flex-shrink: 0; }
 
-/* ── STATS BAND ── */
-.stats-band { background: var(--green); padding: 52px 56px; }
-.stats-inner { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
-.stat-item { text-align: center; padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.15); }
-.stat-item:last-child { border-right: none; }
-.stat-num { font-family: var(--serif); font-size: 54px; font-weight: 400; color: #fff; line-height: 1; }
-.stat-lbl { font-size: var(--text-meta); color: rgba(255,255,255,0.88); margin-top: 6px; font-weight: 500; letter-spacing: 0.03em; }
+/* ── MISSION BAND ── */
+.mission-band {
+  background: linear-gradient(135deg, #006B32 0%, #00843D 45%, #0a9a49 100%);
+  padding: 60px 56px;
+}
+.mission-inner { max-width: 1440px; margin: 0 auto; }
+.mission-header { text-align: center; max-width: 900px; margin: 0 auto 32px; }
+.mission-kicker {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.14); color: #fff;
+  border: 1px solid rgba(255,255,255,0.24);
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 100px;
+  margin-bottom: 14px;
+}
+.mission-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 40px);
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.mission-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.7;
+}
+.mission-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.mission-card {
+  background: rgba(0,0,0,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--r-lg);
+  padding: 22px 20px;
+}
+.mission-card-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(255,209,0,0.18); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; margin-bottom: 12px;
+}
+.mission-card h3 {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.mission-card p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.65;
+}
 
 /* ── WHY JOIN ── */
 .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
@@ -350,6 +397,25 @@ a { text-decoration: none; color: inherit; }
 
 /* ── RULES ── */
 .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.pitch-diagram { margin-top: 56px; }
+.pitch-diagram-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,209,0,0.12); color: var(--gold);
+  border: 1px solid rgba(255,209,0,0.2);
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
+  margin-bottom: 16px;
+}
+.pitch-diagram-title {
+  font-family: var(--serif); font-size: clamp(22px, 2.5vw, 30px);
+  color: #fff; margin-bottom: 20px; font-weight: 400;
+}
+.pitch-diagram img {
+  width: 100%; border-radius: var(--r-lg);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  display: block;
+}
 .rules-list { display: flex; flex-direction: column; gap: 12px; }
 .rule-item {
   background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
@@ -479,6 +545,22 @@ a { text-decoration: none; color: inherit; }
 .fcheckbox input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
 .fcheckbox span { font-size: var(--text-meta); color: rgba(255,255,255,0.8); line-height: 1.6; }
 .fcheckbox a { color: var(--gold); }
+.finput.input-error,
+.fselect.input-error {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 2px rgba(220,38,38,0.18);
+}
+.fcheckbox.checkbox-error {
+  border: 1px solid rgba(220,38,38,0.55);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+.field-error-msg {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #ffb4b4;
+  line-height: 1.45;
+}
 .submit-btn {
   width: 100%; padding: 14px; background: var(--gold); color: var(--dark);
   font-family: var(--sans); font-size: 17px; font-weight: 700;
@@ -617,7 +699,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
   .testi-grid { grid-template-columns: 1fr 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .register-inner { grid-template-columns: 1fr; gap: 40px; }
-  .stats-inner { grid-template-columns: repeat(2,1fr); }
+  .mission-grid { grid-template-columns: 1fr; }
   .grounds-grid { grid-template-columns: 1fr; }
   .payment-grid { grid-template-columns: repeat(2,1fr); }
 }
@@ -645,8 +727,8 @@ textarea.finput { min-height: 120px; resize: vertical; }
       <a href="#about"><i class="fa fa-info-circle fa-fw"></i> About</a>
       <a href="#why-join"><i class="fa fa-star fa-fw"></i> Why join</a>
       <a href="#age-groups"><i class="fa fa-users fa-fw"></i> Age groups</a>
+      <a href="#mission"><i class="fa fa-compass fa-fw"></i> Mission</a>
       <a href="#rules"><i class="fa fa-book fa-fw"></i> Rules</a>
-      <a href="#fees" style="display:none"><i class="fa fa-money fa-fw"></i> Fees</a>
       <a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a>
       <a href="#register" class="nav-cta"><i class="fa fa-user-plus fa-fw"></i> Register</a>
     </div>
@@ -656,8 +738,8 @@ textarea.finput { min-height: 120px; resize: vertical; }
     <a href="#about" onclick="toggleMenu()"><i class="fa fa-info-circle fa-fw"></i> About us</a>
     <a href="#why-join" onclick="toggleMenu()"><i class="fa fa-star fa-fw"></i> Why join</a>
     <a href="#age-groups" onclick="toggleMenu()"><i class="fa fa-users fa-fw"></i> Age groups</a>
+    <a href="#mission" onclick="toggleMenu()"><i class="fa fa-compass fa-fw"></i> Mission</a>
     <a href="#rules" onclick="toggleMenu()"><i class="fa fa-book fa-fw"></i> Rules</a>
-    <a href="#fees" onclick="toggleMenu()" style="display:none"><i class="fa fa-money fa-fw"></i> Fees</a>
     <a href="#contact" onclick="toggleMenu()"><i class="fa fa-phone fa-fw"></i> Contact</a>
     <a href="#register" class="nav-cta" onclick="toggleMenu()"><i class="fa fa-user-plus fa-fw"></i> Register your child</a>
   </div>
@@ -671,10 +753,9 @@ textarea.finput { min-height: 120px; resize: vertical; }
     <div class="hero-left">
       <div class="hero-tag"><i class="fa fa-circle" style="font-size:8px"></i> 2026 season — registration open</div>
       <h1 class="hero-h1">Where SA <em>cricket</em> begins.</h1>
-      <p class="hero-sub">Competitive, structured youth cricket for boys and girls aged <strong style="color:rgba(255,255,255,0.85)">Under 9 through Under 18</strong> in Johannesburg. Match officials as available, real scorecards, and a format unlike any other league.</p>
+      <p class="hero-sub">Competitive, structured youth cricket for boys and girls aged <strong style="color:rgba(255,255,255,0.85)">Under 9 through Under 18</strong> in Johannesburg. Professional match management, digital scorecards, and qualified umpires appointed where available.</p>
       <div class="hero-benefits">
         <span class="hero-benefits-label">League highlights:</span>
-        <div class="hero-benefit"><i class="fa fa-check-circle"></i> Managed matchday operations</div>
         <div class="hero-benefit"><i class="fa fa-check-circle"></i> Safe environment</div>
         <div class="hero-benefit"><i class="fa fa-check-circle"></i> Digital scorecards</div>
       </div>
@@ -727,27 +808,33 @@ textarea.finput { min-height: 120px; resize: vertical; }
   </div>
 </section>
 
-<!-- ── STATS BAND ── -->
-<div class="stats-band">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-num">3</div>
-      <div class="stat-lbl">Seasons completed</div>
+<!-- ── MISSION BAND ── -->
+<section class="mission-band" id="mission">
+  <div class="mission-inner">
+    <div class="mission-header reveal">
+      <div class="mission-kicker"><i class="fa fa-compass"></i> Our mission</div>
+      <h2 class="mission-title">Build confident young cricketers through real match experience</h2>
+      <p class="mission-sub">StrikeZone focuses on player growth from U9 to U18 by combining competitive fixtures, safe matchday operations, and consistent development standards across every age group.</p>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">56</div>
-      <div class="stat-lbl">Matches per season</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-lbl">Digitally recorded scoring</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">20</div>
-      <div class="stat-lbl">Overs per match<br>played on weekends</div>
+    <div class="mission-grid reveal">
+      <article class="mission-card">
+        <div class="mission-card-icon"><i class="fa fa-line-chart"></i></div>
+        <h3>Develop Skills</h3>
+        <p>Every player gets meaningful game time to build technical ability, tactical understanding, and confidence under real match pressure.</p>
+      </article>
+      <article class="mission-card">
+        <div class="mission-card-icon"><i class="fa fa-shield"></i></div>
+        <h3>Protect Standards</h3>
+        <p>Structured fixtures, vetted staff, and clear conduct rules create a safe, respectful environment for players and families.</p>
+      </article>
+      <article class="mission-card">
+        <div class="mission-card-icon"><i class="fa fa-users"></i></div>
+        <h3>Grow Character</h3>
+        <p>Beyond results, we coach teamwork, discipline, accountability, and leadership that help young athletes on and off the field.</p>
+      </article>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ── ABOUT ── -->
 <section class="section" id="about">
@@ -825,7 +912,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
       <div class="why-card reveal">
         <div class="why-icon"><i class="fa fa-shield"></i></div>
         <div class="why-title">Safe, supervised, structured</div>
-        <div class="why-body">Matches are overseen by trained officials, with umpires assigned where available. Matchday staff are vetted. Grounds are selected for safety. Parents can drop off knowing their child is in good hands.</div>
+        <div class="why-body">Matches are overseen by trained officials. Qualified umpires are appointed where available, and all matchday staff are vetted. Grounds are selected for safety so parents can trust the environment.</div>
       </div>
       <div class="why-card reveal">
         <div class="why-icon"><i class="fa fa-road"></i></div>
@@ -946,7 +1033,10 @@ textarea.finput { min-height: 120px; resize: vertical; }
 <section class="section section-dark" id="rules">
   <div class="section-inner">
     <div class="reveal">
-      <div class="section-tag"><i class="fa fa-book"></i> Rules &amp; format</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+        <div class="section-tag" style="margin-bottom:0"><i class="fa fa-book"></i> Rules &amp; format</div>
+        <a href="#pitch-diagram" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,209,0,0.12);color:var(--gold);border:1px solid rgba(255,209,0,0.2);font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px;transition:background 0.15s" onmouseover="this.style.background='rgba(255,209,0,0.22)'" onmouseout="this.style.background='rgba(255,209,0,0.12)'"><i class="fa fa-map"></i> Includes: field anatomy diagram ↓</a>
+      </div>
       <h2 class="section-title">How we <em>play</em></h2>
       <p class="section-sub one-line-desktop" style="max-width:none">Standard T20 cricket rules apply throughout, with one league-specific addition that makes StrikeZone matches unlike anything else your child will play in.</p>
     </div>
@@ -1006,11 +1096,19 @@ textarea.finput { min-height: 120px; resize: vertical; }
         </div>
       </div>
     </div>
+
+    <!-- Pitch diagram -->
+    <div class="pitch-diagram reveal" id="pitch-diagram">
+      <div class="pitch-diagram-label"><i class="fa fa-map"></i> Field guide</div>
+      <h3 class="pitch-diagram-title">Know the <em style="font-style:italic;color:var(--gold)">field</em></h3>
+      <img src="assets/pitch.png" alt="StrikeZone Cricket Pitch and Field Anatomy — showing all fielding positions, the 30-yard circle, batting ends, and wicket details">
+    </div>
+
   </div>
 </section>
 
 <!-- ── FEES ── -->
-<section class="section" id="fees">
+<section class="section" id="fees" style="display:none">
   <div class="section-inner">
     <div class="reveal">
       <div class="section-tag"><i class="fa fa-money"></i> Fees &amp; payments</div>
@@ -1271,7 +1369,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
           <div class="form-group full" style="margin-top:6px">
             <label class="fcheckbox">
               <input type="checkbox" id="f-terms">
-              <span>I have read and agree to the <a href="#rules">league rules</a> and <a href="#fees">fee structure</a>.</span>
+              <span>I have read and agree to the <a href="#rules">league rules</a>.</span>
             </label>
           </div>
           <div class="form-group full" style="margin-top:6px">
@@ -1360,7 +1458,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
     <div class="footer-top">
       <div class="footer-brand">
         <div class="fb-logo">Strike<span>Zone</span></div>
-        <p>Competitive youth cricket for Under 9 to Under 18 in Johannesburg. Building South Africa's next generation of cricketers since 2022.</p>
+        <p>Competitive youth cricket for Under 9 to Under 18 in Johannesburg. A structured league built to develop South Africa's next generation of cricketers.</p>
         <div class="footer-social">
           <a href="#" class="fsoc"><i class="fa fa-facebook"></i></a>
           <a href="#" class="fsoc"><i class="fa fa-instagram"></i></a>
@@ -1372,8 +1470,9 @@ textarea.finput { min-height: 120px; resize: vertical; }
         <a href="#about"><i class="fa fa-angle-right fa-fw"></i> About us</a>
         <a href="#why-join"><i class="fa fa-angle-right fa-fw"></i> Why join</a>
         <a href="#age-groups"><i class="fa fa-angle-right fa-fw"></i> Age groups</a>
+        <a href="#mission"><i class="fa fa-angle-right fa-fw"></i> Mission</a>
         <a href="#rules"><i class="fa fa-angle-right fa-fw"></i> Rules</a>
-        <a href="#fees"><i class="fa fa-angle-right fa-fw"></i> Fees</a>
+
       </div>
       <div class="footer-col">
         <h4>Age groups</h4>
@@ -1387,7 +1486,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
         <h4>Contact</h4>
         <a href="https://wa.me/27000000000"><i class="fa fa-whatsapp fa-fw"></i> +27 00 000 0000</a>
         <a href="mailto:info@strikezone.co.za"><i class="fa fa-envelope-o fa-fw"></i> info@strikezone.co.za</a>
-        <a href="#grounds"><i class="fa fa-map-marker fa-fw"></i> Johannesburg</a>
+        <a href="#contact"><i class="fa fa-map-marker fa-fw"></i> Johannesburg</a>
         <a href="#register" style="margin-top:12px;background:var(--gold);color:var(--dark);padding:8px 14px;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:6px"><i class="fa fa-user-plus fa-fw"></i> Register now</a>
       </div>
     </div>
@@ -1402,6 +1501,72 @@ textarea.finput { min-height: 120px; resize: vertical; }
 /* ── NAV HAMBURGER ── */
 function toggleMenu() {
   document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+/* ── INLINE FIELD ERRORS ── */
+function clearValidationErrors() {
+  document.querySelectorAll('.field-error-msg').forEach(node => node.remove());
+  document.querySelectorAll('.input-error').forEach(node => node.classList.remove('input-error'));
+  document.querySelectorAll('.checkbox-error').forEach(node => node.classList.remove('checkbox-error'));
+}
+
+function showFieldError(fieldId, message) {
+  const field = document.getElementById(fieldId);
+  if (!field) return;
+
+  const errorId = fieldId + '-error';
+  let errorNode = document.getElementById(errorId);
+
+  if (field.type === 'checkbox') {
+    const label = field.closest('.fcheckbox');
+    if (!label) return;
+    label.classList.add('checkbox-error');
+
+    if (!errorNode) {
+      errorNode = document.createElement('div');
+      errorNode.id = errorId;
+      errorNode.className = 'field-error-msg';
+      label.insertAdjacentElement('afterend', errorNode);
+    }
+    errorNode.textContent = message;
+    return;
+  }
+
+  field.classList.add('input-error');
+  const insertAfter = field.closest('.finput-group') || field;
+
+  if (!errorNode) {
+    errorNode = document.createElement('div');
+    errorNode.id = errorId;
+    errorNode.className = 'field-error-msg';
+    insertAfter.insertAdjacentElement('afterend', errorNode);
+  }
+  errorNode.textContent = message;
+}
+
+function wireInlineValidation() {
+  const fieldIds = ['c-name', 'c-email', 'c-phone', 'c-message', 'f-fname', 'f-lname', 'f-age', 'f-pname', 'f-phone'];
+  fieldIds.forEach(id => {
+    const node = document.getElementById(id);
+    if (!node) return;
+    const eventName = node.tagName === 'SELECT' ? 'change' : 'input';
+    node.addEventListener(eventName, () => {
+      node.classList.remove('input-error');
+      const msg = document.getElementById(id + '-error');
+      if (msg) msg.remove();
+    });
+  });
+
+  ['f-terms', 'f-indemnity'].forEach(id => {
+    const node = document.getElementById(id);
+    if (!node) return;
+    node.addEventListener('change', () => {
+      const label = node.closest('.fcheckbox');
+      if (label) label.classList.remove('checkbox-error');
+      const msg = document.getElementById(id + '-error');
+      if (msg) msg.remove();
+    });
+  });
 }
 
 /* ── ANCHOR OFFSET SCROLL ── */
@@ -1451,21 +1616,26 @@ reveals.forEach(r => observer.observe(r));
 
 /* ── FORM SUBMIT ── */
 function submitContactForm() {
+  clearValidationErrors();
+
   const name = document.getElementById('c-name').value.trim();
   const email = document.getElementById('c-email').value.trim();
   const phone = document.getElementById('c-phone').value.trim();
   const message = document.getElementById('c-message').value.trim();
+  let hasError = false;
 
-  if (!name || !email || !phone || !message) {
-    alert('Please complete all contact fields before submitting.');
-    return;
-  }
+  if (!name) { showFieldError('c-name', 'Please enter your full name.'); hasError = true; }
+  if (!email) { showFieldError('c-email', 'Please enter your email address.'); hasError = true; }
+  if (!phone) { showFieldError('c-phone', 'Please enter your phone number.'); hasError = true; }
+  if (!message) { showFieldError('c-message', 'Please enter your message.'); hasError = true; }
 
   const emailPattern = /^\S+@\S+\.\S+$/;
-  if (!emailPattern.test(email)) {
-    alert('Please enter a valid email address.');
-    return;
+  if (email && !emailPattern.test(email)) {
+    showFieldError('c-email', 'Please enter a valid email address.');
+    hasError = true;
   }
+
+  if (hasError) return;
 
   document.getElementById('contact-form-content').style.display = 'none';
   document.getElementById('contact-success-msg').classList.add('show');
@@ -1473,6 +1643,8 @@ function submitContactForm() {
 }
 
 function submitForm() {
+  clearValidationErrors();
+
   const fname = document.getElementById('f-fname').value.trim();
   const lname = document.getElementById('f-lname').value.trim();
   const age   = document.getElementById('f-age').value;
@@ -1480,23 +1652,30 @@ function submitForm() {
   const phone = document.getElementById('f-phone').value.trim();
   const terms = document.getElementById('f-terms').checked;
   const indemnity = document.getElementById('f-indemnity').checked;
+  let hasError = false;
 
-  if (!fname || !lname || !age || !pname || !phone) {
-    alert('Please fill in all required fields before submitting.');
-    return;
-  }
+  if (!fname) { showFieldError('f-fname', 'Please enter the player first name.'); hasError = true; }
+  if (!lname) { showFieldError('f-lname', 'Please enter the player last name.'); hasError = true; }
+  if (!age) { showFieldError('f-age', 'Please select an age group.'); hasError = true; }
+  if (!pname) { showFieldError('f-pname', 'Please enter the parent or guardian name.'); hasError = true; }
+  if (!phone) { showFieldError('f-phone', 'Please enter a WhatsApp number.'); hasError = true; }
   if (!terms) {
-    alert('Please confirm you have read the rules and fee structure.');
-    return;
+    showFieldError('f-terms', 'Please confirm you have read the league rules.');
+    hasError = true;
   }
   if (!indemnity) {
-    alert('Please confirm the parent indemnity before submitting.');
-    return;
+    showFieldError('f-indemnity', 'Please confirm parent indemnity before submitting.');
+    hasError = true;
   }
+
+  if (hasError) return;
+
   document.getElementById('form-content').style.display = 'none';
   document.getElementById('success-msg').classList.add('show');
   document.getElementById('form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
+
+wireInlineValidation();
 </script>
 </body>
 </html>
