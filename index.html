@@ -722,26 +722,26 @@ textarea.finput { min-height: 120px; resize: vertical; }
 <!-- ── NAVBAR ── -->
 <nav class="navbar">
   <div class="nav-inner">
-    <a href="#home" class="nav-logo">Strike<span>Zone</span></a>
+    <a href="index.html" class="nav-logo">Strike<span>Zone</span></a>
     <div class="nav-links">
-      <a href="#about"><i class="fa fa-info-circle fa-fw"></i> About</a>
-      <a href="#why-join"><i class="fa fa-star fa-fw"></i> Why join</a>
-      <a href="#age-groups"><i class="fa fa-users fa-fw"></i> Age groups</a>
-      <a href="#mission"><i class="fa fa-compass fa-fw"></i> Mission</a>
-      <a href="#rules"><i class="fa fa-book fa-fw"></i> Rules</a>
-      <a href="#contact"><i class="fa fa-phone fa-fw"></i> Contact</a>
-      <a href="#register" class="nav-cta"><i class="fa fa-user-plus fa-fw"></i> Register</a>
+      <a href="about.html"><i class="fa fa-info-circle fa-fw"></i> About</a>
+      <a href="why-join.html"><i class="fa fa-star fa-fw"></i> Why join</a>
+      <a href="age-groups.html"><i class="fa fa-users fa-fw"></i> Age groups</a>
+      <a href="mission.html"><i class="fa fa-compass fa-fw"></i> Mission</a>
+      <a href="rules.html"><i class="fa fa-book fa-fw"></i> Rules</a>
+      <a href="contact.html"><i class="fa fa-phone fa-fw"></i> Contact</a>
+      <a href="register.html" class="nav-cta"><i class="fa fa-user-plus fa-fw"></i> Register</a>
     </div>
     <div class="nav-hamburger" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
   </div>
   <div class="mobile-menu" id="mobile-menu">
-    <a href="#about" onclick="toggleMenu()"><i class="fa fa-info-circle fa-fw"></i> About us</a>
-    <a href="#why-join" onclick="toggleMenu()"><i class="fa fa-star fa-fw"></i> Why join</a>
-    <a href="#age-groups" onclick="toggleMenu()"><i class="fa fa-users fa-fw"></i> Age groups</a>
-    <a href="#mission" onclick="toggleMenu()"><i class="fa fa-compass fa-fw"></i> Mission</a>
-    <a href="#rules" onclick="toggleMenu()"><i class="fa fa-book fa-fw"></i> Rules</a>
-    <a href="#contact" onclick="toggleMenu()"><i class="fa fa-phone fa-fw"></i> Contact</a>
-    <a href="#register" class="nav-cta" onclick="toggleMenu()"><i class="fa fa-user-plus fa-fw"></i> Register your child</a>
+    <a href="about.html" onclick="toggleMenu()"><i class="fa fa-info-circle fa-fw"></i> About us</a>
+    <a href="why-join.html" onclick="toggleMenu()"><i class="fa fa-star fa-fw"></i> Why join</a>
+    <a href="age-groups.html" onclick="toggleMenu()"><i class="fa fa-users fa-fw"></i> Age groups</a>
+    <a href="mission.html" onclick="toggleMenu()"><i class="fa fa-compass fa-fw"></i> Mission</a>
+    <a href="rules.html" onclick="toggleMenu()"><i class="fa fa-book fa-fw"></i> Rules</a>
+    <a href="contact.html" onclick="toggleMenu()"><i class="fa fa-phone fa-fw"></i> Contact</a>
+    <a href="register.html" class="nav-cta" onclick="toggleMenu()"><i class="fa fa-user-plus fa-fw"></i> Register your child</a>
   </div>
 </nav>
 
@@ -1638,9 +1638,40 @@ function submitContactForm() {
 
   if (hasError) return;
 
-  document.getElementById('contact-form-content').style.display = 'none';
-  document.getElementById('contact-success-msg').classList.add('show');
-  document.getElementById('contact-form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Show alert with URL and data
+  var url = 'https://localhost:7045/api/Contact';
+  var data = {
+    name: name,
+    emailAddress: email,
+    phoneNumber: phone,
+    subject: '',
+    message: message,
+    consentToPrivacyPolicy: false
+  };
+  alert('Calling URL: ' + url + '\nData: ' + JSON.stringify(data, null, 2));
+
+  // AJAX call using fetch
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': '*/*'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.json ? response.json() : response;
+  })
+  .then(() => {
+    document.getElementById('contact-form-content').style.display = 'none';
+    document.getElementById('contact-success-msg').classList.add('show');
+    document.getElementById('contact-form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  })
+  .catch(error => {
+    alert('There was an error submitting the form: ' + error.message);
+    document.getElementById('contact-form-content').style.display = '';
+  });
 }
 
 function submitForm() {

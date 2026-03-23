@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | StrikeZone Cricket League</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Strike<span>Zone</span></a>
+      <div class="nav-links">
+        <a href="about.html"><i class="fa fa-info-circle fa-fw"></i> About</a>
+        <a href="why-join.html"><i class="fa fa-star fa-fw"></i> Why join</a>
+        <a href="age-groups.html"><i class="fa fa-users fa-fw"></i> Age groups</a>
+        <a href="mission.html"><i class="fa fa-compass fa-fw"></i> Mission</a>
+        <a href="rules.html"><i class="fa fa-book fa-fw"></i> Rules</a>
+        <a href="contact.html"><i class="fa fa-phone fa-fw"></i> Contact</a>
+        <a href="register.html" class="nav-cta"><i class="fa fa-user-plus fa-fw"></i> Register</a>
+      </div>
+      <div class="nav-hamburger" onclick="toggleMenu()"><i class="fa fa-bars"></i></div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="about.html" onclick="toggleMenu()"><i class="fa fa-info-circle fa-fw"></i> About us</a>
+      <a href="why-join.html" onclick="toggleMenu()"><i class="fa fa-star fa-fw"></i> Why join</a>
+      <a href="age-groups.html" onclick="toggleMenu()"><i class="fa fa-users fa-fw"></i> Age groups</a>
+      <a href="mission.html" onclick="toggleMenu()"><i class="fa fa-compass fa-fw"></i> Mission</a>
+      <a href="rules.html" onclick="toggleMenu()"><i class="fa fa-book fa-fw"></i> Rules</a>
+      <a href="contact.html" onclick="toggleMenu()"><i class="fa fa-phone fa-fw"></i> Contact</a>
+      <a href="register.html" class="nav-cta" onclick="toggleMenu()"><i class="fa fa-user-plus fa-fw"></i> Register your child</a>
+    </div>
+  </nav>
+
+  <!-- ── CONTACT BAND ── -->
+  <section class="contact-band">
+    <div class="contact-inner">
+      <div class="contact-left reveal">
+        <div class="ct-title">Contact StrikeZone</div>
+        <div class="ct-sub">Send us a quick message for fixtures, registrations, age-group guidance, or season queries. We typically respond within a few hours.</div>
+        <div class="contact-points">
+          <div class="contact-point"><i class="fa fa-check-circle fa-fw"></i> Parent-friendly support for registration and player onboarding.</div>
+          <div class="contact-point"><i class="fa fa-check-circle fa-fw"></i> Fast updates on match schedules, venues, and season timelines.</div>
+          <div class="contact-point"><i class="fa fa-check-circle fa-fw"></i> Direct WhatsApp support for urgent match-day questions.</div>
+        </div>
+        <div class="contact-btns">
+          <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer" class="btn-wa"><i class="fa fa-whatsapp fa-fw"></i> WhatsApp us</a>
+          <a href="mailto:info@strikezone.co.za" class="btn-email"><i class="fa fa-envelope-o fa-fw"></i> Email us</a>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <div class="form-card contact-card" id="contact-form-card">
+          <div id="contact-form-content">
+            <div class="form-title">Send us a message</div>
+            <div class="form-sub">Please share your details and message. We will get back to you shortly.</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="flabel" for="c-name"><i class="fa fa-user fa-fw"></i> Full name</label>
+                <input class="finput" type="text" id="c-name" placeholder="Your full name" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label class="flabel" for="c-email"><i class="fa fa-envelope-o fa-fw"></i> Email address</label>
+                <input class="finput" type="email" id="c-email" placeholder="you@example.com" autocomplete="email">
+              </div>
+            </div>
+            <div class="form-group full">
+              <label class="flabel" for="c-phone"><i class="fa fa-phone fa-fw"></i> Phone number</label>
+              <input class="finput" type="tel" id="c-phone" placeholder="082 345 6789" autocomplete="tel">
+            </div>
+            <div class="form-group full">
+              <label class="flabel" for="c-message"><i class="fa fa-commenting-o fa-fw"></i> Message</label>
+              <textarea class="finput" id="c-message" placeholder="How can we help you?"></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitContactForm()">
+              <i class="fa fa-paper-plane fa-fw"></i> Send message
+            </button>
+          </div>
+          <div class="success-msg" id="contact-success-msg">
+            <div class="success-icon"><i class="fa fa-check-circle"></i></div>
+            <div class="success-title">Message sent!</div>
+            <div class="success-sub">Thank you. Our team will contact you soon using your provided details.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="fb-logo">Strike<span>Zone</span></div>
+          <p>Competitive youth cricket for Under 9 to Under 18 in Johannesburg. A structured league built to develop South Africa's next generation of cricketers.</p>
+          <div class="footer-social">
+            <a href="#" class="fsoc"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="fsoc"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="fsoc"><i class="fa fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick links</h4>
+          <a href="about.html"><i class="fa fa-angle-right fa-fw"></i> About us</a>
+          <a href="why-join.html"><i class="fa fa-angle-right fa-fw"></i> Why join</a>
+          <a href="age-groups.html"><i class="fa fa-angle-right fa-fw"></i> Age groups</a>
+          <a href="mission.html"><i class="fa fa-angle-right fa-fw"></i> Mission</a>
+          <a href="rules.html"><i class="fa fa-angle-right fa-fw"></i> Rules</a>
+        </div>
+        <div class="footer-col">
+          <h4>Age groups</h4>
+          <a href="age-groups.html">Under 9</a>
+          <a href="age-groups.html">Under 11</a>
+          <a href="age-groups.html">Under 13</a>
+          <a href="age-groups.html">Under 15</a>
+          <a href="age-groups.html">Under 18</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="https://wa.me/27000000000"><i class="fa fa-whatsapp fa-fw"></i> +27 00 000 0000</a>
+          <a href="mailto:info@strikezone.co.za"><i class="fa fa-envelope-o fa-fw"></i> info@strikezone.co.za</a>
+          <a href="index.html"><i class="fa fa-map-marker fa-fw"></i> Johannesburg</a>
+          <a href="register.html" style="margin-top:12px;background:var(--gold);color:var(--dark);padding:8px 14px;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:6px"><i class="fa fa-user-plus fa-fw"></i> Register now</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 StrikeZone Cricket League, Johannesburg. All rights reserved.</span>
+        <span>Built with the Proteas palette — <span style="color:var(--gold)">&#9670;</span> South African cricket</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ── SCROLL REVEAL ── */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(r => observer.observe(r));
+
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    function clearValidationErrors() {
+      document.querySelectorAll('.field-error-msg').forEach(node => node.remove());
+      document.querySelectorAll('.input-error').forEach(node => node.classList.remove('input-error'));
+    }
+
+    function showFieldError(fieldId, message) {
+      const node = document.getElementById(fieldId);
+      if (!node) return;
+      const errorMsg = document.createElement('div');
+      errorMsg.className = 'field-error-msg';
+      errorMsg.id = fieldId + '-error';
+      errorMsg.textContent = message;
+      node.parentElement.appendChild(errorMsg);
+      node.classList.add('input-error');
+    }
+
+    function submitContactForm() {
+      clearValidationErrors();
+
+      const name = document.getElementById('c-name').value.trim();
+      const email = document.getElementById('c-email').value.trim();
+      const phone = document.getElementById('c-phone').value.trim();
+      const message = document.getElementById('c-message').value.trim();
+      let hasError = false;
+
+      if (!name) { showFieldError('c-name', 'Please enter your full name.'); hasError = true; }
+      if (!email) { showFieldError('c-email', 'Please enter your email address.'); hasError = true; }
+      if (!phone) { showFieldError('c-phone', 'Please enter your phone number.'); hasError = true; }
+      if (!message) { showFieldError('c-message', 'Please enter your message.'); hasError = true; }
+
+      const emailPattern = /^\S+@\S+\.\S+$/;
+      if (email && !emailPattern.test(email)) {
+        showFieldError('c-email', 'Please enter a valid email address.');
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      var url = 'https://localhost:7045/api/Contact';
+      var data = {
+        name: name,
+        emailAddress: email,
+        phoneNumber: phone,
+        subject: '',
+        message: message,
+        consentToPrivacyPolicy: false
+      };
+      alert('Calling URL: ' + url + '\nData: ' + JSON.stringify(data, null, 2));
+
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': '*/*'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json ? response.json() : response;
+      })
+      .then(() => {
+        document.getElementById('contact-form-content').style.display = 'none';
+        document.getElementById('contact-success-msg').classList.add('show');
+        document.getElementById('contact-form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(error => {
+        alert('There was an error submitting the form: ' + error.message);
+        document.getElementById('contact-form-content').style.display = '';
+      });
+    }
+  </script>
+</body>
+</html>
