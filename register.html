@@ -298,11 +298,13 @@
         },
         body: JSON.stringify(data)
       })
-      .then(response => {
+      .then(async response => {
+        const responseBody = await response.text();
         if (response.status !== 200) {
-          throw new Error('Request failed with status ' + response.status);
+          const bodyText = responseBody && responseBody.trim() ? responseBody : '[empty response body]';
+          throw new Error('Status ' + response.status + ': ' + bodyText);
         }
-        return response.json ? response.json() : response;
+        return responseBody;
       })
       .then(() => {
         document.getElementById('form-content').style.display = 'none';
@@ -310,7 +312,8 @@
         document.getElementById('form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
       .catch(error => {
-        alert('An error occured. Please send an email to kverma@outlook.com.');
+        const errorText = (error && error.message) ? error.message : String(error);
+        alert('An error occured: ' + errorText + '. Please send an email to kverma@outlook.com.');
         console.error('Registration form submission error:', error);
       });
     }
