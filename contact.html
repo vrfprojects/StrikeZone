@@ -182,7 +182,7 @@
 
       if (hasError) return;
 
-      var url = 'https://localhost:7045/api/Contact';
+      var url = 'http://ex.bakerly.co.za/api/Contact';
       var data = {
         name: name,
         emailAddress: email,
@@ -202,7 +202,9 @@
         body: JSON.stringify(data)
       })
       .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
+        if (response.status !== 200) {
+          throw new Error('Request failed with status ' + response.status);
+        }
         return response.json ? response.json() : response;
       })
       .then(() => {
@@ -211,7 +213,8 @@
         document.getElementById('contact-form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
       })
       .catch(error => {
-        alert('There was an error submitting the form: ' + error.message);
+        alert('An error occured. Please send an email to kverma@outlook.com.');
+        console.error('Contact form submission error:', error);
         document.getElementById('contact-form-content').style.display = '';
       });
     }
