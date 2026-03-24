@@ -256,18 +256,34 @@
 
       const fname = document.getElementById('f-fname').value.trim();
       const lname = document.getElementById('f-lname').value.trim();
+      const dob   = document.getElementById('f-dob').value;
       const age   = document.getElementById('f-age').value;
+      const role  = document.getElementById('f-role').value;
       const pname = document.getElementById('f-pname').value.trim();
       const phone = document.getElementById('f-phone').value.trim();
+      const email = document.getElementById('f-email').value.trim();
+      const source = document.getElementById('f-source').value;
+      const consent = document.getElementById('f-consent').checked;
       const terms = document.getElementById('f-terms').checked;
       const indemnity = document.getElementById('f-indemnity').checked;
       let hasError = false;
 
       if (!fname) { showFieldError('f-fname', 'Please enter the player first name.'); hasError = true; }
       if (!lname) { showFieldError('f-lname', 'Please enter the player last name.'); hasError = true; }
+      if (!dob) { showFieldError('f-dob', 'Please select the player date of birth.'); hasError = true; }
       if (!age) { showFieldError('f-age', 'Please select an age group.'); hasError = true; }
+      if (!role) { showFieldError('f-role', 'Please select the player role.'); hasError = true; }
       if (!pname) { showFieldError('f-pname', 'Please enter the parent or guardian name.'); hasError = true; }
       if (!phone) { showFieldError('f-phone', 'Please enter a WhatsApp number.'); hasError = true; }
+      if (!email) { showFieldError('f-email', 'Please enter an email address.'); hasError = true; }
+      if (!source) { showFieldError('f-source', 'Please tell us how you heard about us.'); hasError = true; }
+
+      const emailPattern = /^\S+@\S+\.\S+$/;
+      if (email && !emailPattern.test(email)) {
+        showFieldError('f-email', 'Please enter a valid email address.');
+        hasError = true;
+      }
+
       if (!terms) {
         showFieldError('f-terms', 'Please confirm you have read the league rules.');
         hasError = true;
@@ -281,12 +297,18 @@
 
       var url = 'https://ex.bakerly.co.za/api/Contact/player-registration';
       var data = {
-        firstName: fname,
-        lastName: lname,
+        playerFirstName: fname,
+        playerLastName: lname,
+        dateOfBirth: dob,
         ageGroup: age,
-        parentName: pname,
-        whatsappNumber: phone,
-        consentToRulesAndIndemnity: true
+        playerRole: role,
+        parentGuardianName: pname,
+        whatsAppNumber: phone,
+        emailAddress: email,
+        howDidYouHearAboutUs: source,
+        consentToPhotography: consent,
+        agreementToLeagueRules: terms,
+        indemnityAgreement: indemnity
       };
       alert('Calling URL: ' + url + '\nData: ' + JSON.stringify(data, null, 2));
 
