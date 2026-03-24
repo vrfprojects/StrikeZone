@@ -51,6 +51,7 @@ a { text-decoration: none; color: inherit; }
   z-index: 999;
   background: var(--dark);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 .nav-inner {
@@ -230,24 +231,30 @@ a { text-decoration: none; color: inherit; }
   border: 1px solid rgba(13, 32, 24, 0.14);
 }
 .btn-ghost-dark:hover { background: rgba(0, 59, 47, 0.05); }
-.hero-stat-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 26px;
+.hero-mission-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
-.hero-stat-bar strong {
-  display: block;
-  font-family: var(--serif);
-  font-size: 34px;
-  color: #fff;
-  line-height: 1;
+.hero-mission-item {
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--r);
 }
-.hero-stat-bar span {
+.hero-mission-item strong {
   display: block;
-  margin-top: 5px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+}
+.hero-mission-item span {
+  display: block;
+  margin-top: 8px;
   font-size: 15px;
+  line-height: 1.6;
   color: rgba(255, 255, 255, 0.78);
 }
 
@@ -308,63 +315,58 @@ a { text-decoration: none; color: inherit; }
   gap: 60px;
   align-items: center;
 }
-.about-panel {
+.about-mission-card {
   background: var(--dark);
   border-radius: var(--r-xl);
   padding: 36px 32px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   height: 100%;
 }
-.ap-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.ap-stat {
-  text-align: center;
-  padding: 18px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: var(--r);
-}
-.ap-num {
-  display: block;
-  font-family: var(--serif);
-  font-size: 42px;
-  font-weight: 600;
+.about-mission-card .section-tag {
+  background: rgba(255, 255, 255, 0.08);
   color: var(--gold);
-  line-height: 1;
-  margin-bottom: 6px;
+  border-color: rgba(255, 255, 255, 0.12);
+  margin-bottom: 0;
 }
-.ap-lbl {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.65);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.about-mission-title {
+  font-family: var(--serif);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+  color: #fff;
 }
-.ap-quote {
-  border-left: 3px solid var(--gold);
-  padding: 14px 18px;
-  background: rgba(255, 209, 0, 0.06);
-  border-radius: 0 var(--r) var(--r) 0;
-  font-style: italic;
+.about-mission-title em { color: var(--gold); font-style: italic; }
+.about-mission-lead {
+  font-size: 17px;
+  line-height: 1.75;
   color: rgba(255, 255, 255, 0.82);
-  font-size: 15px;
-  line-height: 1.7;
 }
-.ap-quote i { color: var(--gold); margin-right: 6px; opacity: 0.7; }
-.ap-badges { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.ap-badges > div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.8);
+.about-mission-points {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.about-mission-point {
+  padding: 16px 18px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 10px 12px;
-  border-radius: 8px;
+  border-radius: 10px;
 }
-.ap-badges i { color: var(--gold); font-size: 13px; flex-shrink: 0; }
+.about-mission-point strong {
+  display: block;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.about-mission-point span {
+  display: block;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+}
 
 .mission-band {
   background: linear-gradient(135deg, #006b32 0%, #00843d 45%, #0a9a49 100%);
@@ -847,6 +849,17 @@ textarea.finput { min-height: 120px; resize: vertical; }
   transition: all 0.15s;
 }
 .fsoc:hover { background: var(--green); color: #fff; }
+.footer-register-link {
+  margin-top: 12px;
+  background: var(--gold);
+  color: var(--dark) !important;
+  padding: 8px 14px !important;
+  border-radius: 8px;
+  font-weight: 700;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+}
 .footer-bottom {
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
@@ -858,6 +871,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
   flex-wrap: wrap;
   gap: 8px;
 }
+.footer-gold-diamond { color: var(--gold); }
 
 .success-msg { display: none; text-align: center; padding: 24px; }
 .success-msg.show { display: block; }
@@ -963,8 +977,7 @@ textarea.finput { min-height: 120px; resize: vertical; }
   .testi-grid,
   .footer-top { grid-template-columns: 1fr; }
   .age-grid { grid-template-columns: 1fr; }
-  .ap-numbers,
-  .ap-badges { grid-template-columns: 1fr; }
+  .hero-mission-list { grid-template-columns: 1fr; }
   .legal-card,
   .form-card { padding: 26px 22px; }
   .cta-strip { flex-direction: column; align-items: flex-start; }
