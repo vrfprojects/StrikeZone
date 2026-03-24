@@ -81,7 +81,16 @@
           <div class="success-msg" id="contact-success-msg">
             <div class="success-icon"><i class="fa fa-check-circle"></i></div>
             <div class="success-title">Message sent!</div>
-            <div class="success-sub">Thank you. Our team will contact you soon using your provided details.</div>
+            <div class="success-sub">Thank you, <span id="contact-success-name"></span>. Our team will contact you soon using your provided details.</div>
+          </div>
+          <div class="error-msg" id="error-msg" style="display:none;background:#d32f2f;color:#fff;padding:16px;border-radius:8px;margin-top:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+              <div style="flex:1;">
+                <div style="font-weight:600;margin-bottom:4px;">Error</div>
+                <div id="error-msg-text" style="font-size:14px;line-height:1.5;"></div>
+              </div>
+              <button onclick="document.getElementById('error-msg').style.display='none'" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;">×</button>
+            </div>
           </div>
         </div>
       </div>
@@ -132,94 +141,7 @@
     </div>
   </footer>
 
-  <script>
-    /* ── SCROLL REVEAL ── */
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(r => observer.observe(r));
-
-    function toggleMenu() {
-      document.getElementById('mobile-menu').classList.toggle('open');
-    }
-
-    function clearValidationErrors() {
-      document.querySelectorAll('.field-error-msg').forEach(node => node.remove());
-      document.querySelectorAll('.input-error').forEach(node => node.classList.remove('input-error'));
-    }
-
-    function showFieldError(fieldId, message) {
-      const node = document.getElementById(fieldId);
-      if (!node) return;
-      const errorMsg = document.createElement('div');
-      errorMsg.className = 'field-error-msg';
-      errorMsg.id = fieldId + '-error';
-      errorMsg.textContent = message;
-      node.parentElement.appendChild(errorMsg);
-      node.classList.add('input-error');
-    }
-
-    function submitContactForm() {
-      clearValidationErrors();
-
-      const name = document.getElementById('c-name').value.trim();
-      const email = document.getElementById('c-email').value.trim();
-      const phone = document.getElementById('c-phone').value.trim();
-      const message = document.getElementById('c-message').value.trim();
-      let hasError = false;
-
-      if (!name) { showFieldError('c-name', 'Please enter your full name.'); hasError = true; }
-      if (!email) { showFieldError('c-email', 'Please enter your email address.'); hasError = true; }
-      if (!phone) { showFieldError('c-phone', 'Please enter your phone number.'); hasError = true; }
-      if (!message) { showFieldError('c-message', 'Please enter your message.'); hasError = true; }
-
-      const emailPattern = /^\S+@\S+\.\S+$/;
-      if (email && !emailPattern.test(email)) {
-        showFieldError('c-email', 'Please enter a valid email address.');
-        hasError = true;
-      }
-
-      if (hasError) return;
-
-      var url = 'https://ex.bakerly.co.za/api/Contact';
-      var data = {
-        name: name,
-        emailAddress: email,
-        phoneNumber: phone,
-        subject: 'Strike Zone website contact form message',
-        message: message
-      };
-      alert('Calling URL: ' + url + '\nData: ' + JSON.stringify(data, null, 2));
-
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': '*/*'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(async response => {
-        const responseBody = await response.text();
-        if (response.status !== 200) {
-          const bodyText = responseBody && responseBody.trim() ? responseBody : '[empty response body]';
-          throw new Error('Status ' + response.status + ': ' + bodyText);
-        }
-        return responseBody;
-      })
-      .then(() => {
-        document.getElementById('contact-form-content').style.display = 'none';
-        document.getElementById('contact-success-msg').classList.add('show');
-        document.getElementById('contact-form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      })
-      .catch(error => {
-        const errorText = (error && error.message) ? error.message : String(error);
-        alert('An error occured: ' + errorText + '. Please send an email to kverma@outlook.com.');
-        console.error('Contact form submission error:', error);
-        document.getElementById('contact-form-content').style.display = '';
-      });
-    }
-  </script>
+  <script src="assets/common.js"></script>
+  <script src="assets/contact.js"></script>
 </body>
 </html>

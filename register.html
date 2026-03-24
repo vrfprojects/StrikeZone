@@ -67,19 +67,9 @@
           <div id="form-content">
             <div class="form-title">Register your child</div>
             <div class="form-sub">2026 Summer Season · Registration open now</div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="flabel" for="f-fname"><i class="fa fa-user fa-fw"></i> Player first name</label>
-                <input class="finput" type="text" placeholder="e.g. Aiden" id="f-fname" autocomplete="given-name">
-              </div>
-              <div class="form-group">
-                <label class="flabel" for="f-lname"><i class="fa fa-user fa-fw"></i> Player last name</label>
-                <input class="finput" type="text" placeholder="e.g. Sharma" id="f-lname" autocomplete="family-name">
-              </div>
-            </div>
             <div class="form-group full">
-              <label class="flabel" for="f-dob"><i class="fa fa-calendar fa-fw"></i> Date of birth</label>
-              <input class="finput" type="date" id="f-dob" autocomplete="bday">
+              <label class="flabel" for="f-fullname"><i class="fa fa-user fa-fw"></i> Player full name</label>
+              <input class="finput" type="text" placeholder="e.g. Aiden Sharma" id="f-fullname" autocomplete="name">
             </div>
             <div class="form-group full">
               <label class="flabel" for="f-age"><i class="fa fa-users fa-fw"></i> Age group</label>
@@ -134,24 +124,7 @@
                 <option>Other</option>
               </select>
             </div>
-            <div class="form-group full" style="margin-top:4px">
-              <label class="fcheckbox">
-                <input type="checkbox" id="f-consent">
-                <span>I consent to my child being photographed at StrikeZone matches for use on the website and social media. <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a></span>
-              </label>
-            </div>
-            <div class="form-group full" style="margin-top:6px">
-              <label class="fcheckbox">
-                <input type="checkbox" id="f-terms">
-                <span>I have read and agree to the <a href="rules.html">league rules</a>.</span>
-              </label>
-            </div>
-            <div class="form-group full" style="margin-top:6px">
-              <label class="fcheckbox">
-                <input type="checkbox" id="f-indemnity">
-                <span>As parent or guardian, I indemnify StrikeZone Cricket League, its staff, officials, and venue partners against claims arising from participation in league activities, except where caused by proven negligence.</span>
-              </label>
-            </div>
+
             <button class="submit-btn" onclick="submitForm()">
               <i class="fa fa-paper-plane fa-fw"></i> Submit registration
             </button>
@@ -165,8 +138,17 @@
           <div class="success-msg" id="success-msg">
             <div class="success-icon"><i class="fa fa-check-circle"></i></div>
             <div class="success-title">Registration submitted!</div>
-            <div class="success-sub">Thank you! We will review your registration and confirm your child's place via WhatsApp within 48 hours.</div>
+            <div class="success-sub">Thank you, <span id="success-player-name"></span>! We will review your registration and confirm your child's place via WhatsApp within 48 hours.</div>
             <div style="margin-top:20px;font-size:13px;color:rgba(255,255,255,0.35)">Questions? WhatsApp us at <a href="https://wa.me/27000000000" style="color:var(--gold)">+27 00 000 0000</a></div>
+          </div>
+          <div class="error-msg" id="error-msg" style="display:none;background:#d32f2f;color:#fff;padding:16px;border-radius:8px;margin-top:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+              <div style="flex:1;">
+                <div style="font-weight:600;margin-bottom:4px;">Error</div>
+                <div id="error-msg-text" style="font-size:14px;line-height:1.5;"></div>
+              </div>
+              <button onclick="document.getElementById('error-msg').style.display='none'" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0;width:24px;height:24px;display:flex;align-items:center;justify-content:center;">×</button>
+            </div>
           </div>
         </div>
       </div>
@@ -217,128 +199,7 @@
     </div>
   </footer>
 
-  <script>
-    /* ── SCROLL REVEAL ── */
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(r => observer.observe(r));
-
-    function toggleMenu() {
-      document.getElementById('mobile-menu').classList.toggle('open');
-    }
-
-    function clearValidationErrors() {
-      document.querySelectorAll('.field-error-msg').forEach(node => node.remove());
-      document.querySelectorAll('.input-error').forEach(node => node.classList.remove('input-error'));
-      ['f-terms', 'f-indemnity'].forEach(id => {
-        const node = document.getElementById(id);
-        if (!node) return;
-        const label = node.closest('.fcheckbox');
-        if (label) label.classList.remove('checkbox-error');
-      });
-    }
-
-    function showFieldError(fieldId, message) {
-      const node = document.getElementById(fieldId);
-      if (!node) return;
-      const errorMsg = document.createElement('div');
-      errorMsg.className = 'field-error-msg';
-      errorMsg.id = fieldId + '-error';
-      errorMsg.textContent = message;
-      node.parentElement.appendChild(errorMsg);
-      node.classList.add('input-error');
-    }
-
-    function submitForm() {
-      clearValidationErrors();
-
-      const fname = document.getElementById('f-fname').value.trim();
-      const lname = document.getElementById('f-lname').value.trim();
-      const dob   = document.getElementById('f-dob').value;
-      const age   = document.getElementById('f-age').value;
-      const role  = document.getElementById('f-role').value;
-      const pname = document.getElementById('f-pname').value.trim();
-      const phone = document.getElementById('f-phone').value.trim();
-      const email = document.getElementById('f-email').value.trim();
-      const source = document.getElementById('f-source').value;
-      const consent = document.getElementById('f-consent').checked;
-      const terms = document.getElementById('f-terms').checked;
-      const indemnity = document.getElementById('f-indemnity').checked;
-      let hasError = false;
-
-      if (!fname) { showFieldError('f-fname', 'Please enter the player first name.'); hasError = true; }
-      if (!lname) { showFieldError('f-lname', 'Please enter the player last name.'); hasError = true; }
-      if (!dob) { showFieldError('f-dob', 'Please select the player date of birth.'); hasError = true; }
-      if (!age) { showFieldError('f-age', 'Please select an age group.'); hasError = true; }
-      if (!role) { showFieldError('f-role', 'Please select the player role.'); hasError = true; }
-      if (!pname) { showFieldError('f-pname', 'Please enter the parent or guardian name.'); hasError = true; }
-      if (!phone) { showFieldError('f-phone', 'Please enter a WhatsApp number.'); hasError = true; }
-      if (!email) { showFieldError('f-email', 'Please enter an email address.'); hasError = true; }
-      if (!source) { showFieldError('f-source', 'Please tell us how you heard about us.'); hasError = true; }
-
-      const emailPattern = /^\S+@\S+\.\S+$/;
-      if (email && !emailPattern.test(email)) {
-        showFieldError('f-email', 'Please enter a valid email address.');
-        hasError = true;
-      }
-
-      if (!terms) {
-        showFieldError('f-terms', 'Please confirm you have read the league rules.');
-        hasError = true;
-      }
-      if (!indemnity) {
-        showFieldError('f-indemnity', 'Please confirm parent indemnity before submitting.');
-        hasError = true;
-      }
-
-      if (hasError) return;
-
-      var url = 'https://ex.bakerly.co.za/api/Contact/player-registration';
-      var data = {
-        playerFirstName: fname,
-        playerLastName: lname,
-        dateOfBirth: dob,
-        ageGroup: age,
-        playerRole: role,
-        parentGuardianName: pname,
-        whatsAppNumber: phone,
-        emailAddress: email,
-        howDidYouHearAboutUs: source,
-        consentToPhotography: consent,
-        agreementToLeagueRules: terms,
-        indemnityAgreement: indemnity
-      };
-      alert('Calling URL: ' + url + '\nData: ' + JSON.stringify(data, null, 2));
-
-      fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': '*/*'
-        },
-        body: JSON.stringify(data)
-      })
-      .then(async response => {
-        const responseBody = await response.text();
-        if (response.status !== 200) {
-          const bodyText = responseBody && responseBody.trim() ? responseBody : '[empty response body]';
-          throw new Error('Status ' + response.status + ': ' + bodyText);
-        }
-        return responseBody;
-      })
-      .then(() => {
-        document.getElementById('form-content').style.display = 'none';
-        document.getElementById('success-msg').classList.add('show');
-        document.getElementById('form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      })
-      .catch(error => {
-        const errorText = (error && error.message) ? error.message : String(error);
-        alert('An error occured: ' + errorText + '. Please send an email to kverma@outlook.com.');
-        console.error('Registration form submission error:', error);
-      });
-    }
-  </script>
+  <script src="assets/common.js"></script>
+  <script src="assets/register.js"></script>
 </body>
 </html>
