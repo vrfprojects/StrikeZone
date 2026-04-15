@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://strikezone.co.za/sitemap.xml

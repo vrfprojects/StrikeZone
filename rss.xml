@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>StrikeZone Cricket League Updates</title>
+    <link>https://strikezone.co.za/</link>
+    <description>Latest updates from StrikeZone Cricket League, with a focus on services and the founder's journey.</description>
+    <language>en-za</language>
+    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate>
+
+    <item>
+      <title>StrikeZone Services Overview</title>
+      <link>https://strikezone.co.za/services.html</link>
+      <guid>https://strikezone.co.za/services.html</guid>
+      <description>Explore StrikeZone's services, including fixture management, live score updates, matchday standards, and player development tracking.</description>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title>Founder's Journey and League Mission</title>
+      <link>https://strikezone.co.za/mission.html</link>
+      <guid>https://strikezone.co.za/mission.html</guid>
+      <description>Read how the founder's journey shaped StrikeZone's mission to deliver meaningful youth cricket opportunities in Johannesburg.</description>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+
+    <item>
+      <title>About StrikeZone Cricket League</title>
+      <link>https://strikezone.co.za/about.html</link>
+      <guid>https://strikezone.co.za/about.html</guid>
+      <description>Learn about StrikeZone's approach to youth cricket development from U9 to U18.</description>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
