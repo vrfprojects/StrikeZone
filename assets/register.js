@@ -59,31 +59,50 @@ function submitForm() {
     howDidYouHearAboutUs: source
   };
 
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': '*/*'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(async function(response) {
-    var responseBody = await response.text();
-    if (response.status !== 200) {
-      var bodyText = responseBody && responseBody.trim() ? responseBody : '[empty response body]';
-      throw new Error('Status ' + response.status + ': ' + bodyText);
-    }
-    return responseBody;
-  })
-  .then(function() {
-    document.getElementById('success-player-name').textContent = fullname;
-    document.getElementById('form-content').style.display = 'none';
-    document.getElementById('success-msg').classList.add('show');
-    document.getElementById('form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  })
-  .catch(function(error) {
-    var errorText = error && error.message ? error.message : String(error);
-    showError('An error occured: ' + errorText + '. Please send an email to kverma@outlook.com.');
-    console.error('Registration form submission error:', error);
-  });
+  var requestKey = window.generateRequestKey();
+  var secret = window.HMAC_SECRET || prompt('Enter HMAC secret (for demo only):');
+  var timestamp = Date.now().toString();
+  var message = 'POST' + url + JSON.stringify(data) + timestamp;
+  function sendRequest(signature) {
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'X-Request-Key': requestKey,
+        'X-Timestamp': timestamp,
+        'X-Signature': signature
+      },
+      body: JSON.stringify(data)
+    })
+    .then(async function(response) {
+      var responseBody = await response.text();
+      if (response.status !== 200) {
+        var bodyText = responseBody && responseBody.trim() ? responseBody : '[empty response body]';
+        throw new Error('Status ' + response.status + ': ' + bodyText);
+      }
+      return responseBody;
+    })
+    .then(function() {
+      document.getElementById('success-player-name').textContent = fullname;
+      document.getElementById('form-content').style.display = 'none';
+      document.getElementById('success-msg').classList.add('show');
+      document.getElementById('form-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    })
+    .catch(function(error) {
+      var errorText = error && error.message ? error.message : String(error);
+      showError('An error occured: ' + errorText + '. Please send an email to kverma@outlook.com.');
+      console.error('Registration form submission error:', error);
+    });
+  }
+  if (window.generateHmacSignature) {
+    window.generateHmacSignature(secret, message).then(sendRequest);
+  } else {
+    var script = document.createElement('script');
+    script.src = 'assets/hmac.js';
+    script.onload = function() {
+      window.generateHmacSignature(secret, message).then(sendRequest);
+    };
+    document.head.appendChild(script);
+  }
 }
