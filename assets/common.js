@@ -1,4 +1,9 @@
+// Set your HMAC secret here (code-level default). Change the value as needed.
+if (!window.HMAC_SECRET) {
+  window.HMAC_SECRET = 'strikezone-secret-key123e4567-e89b-12d3-a456-426614174000-strikezone'; // TODO: Replace with your actual HMAC key
+}
 (function() {
+    // BASE_API_URL is now set in config.js. Make sure to load config.js before this file.
   // Generates a GUID (RFC4122 version 4 compliant)
   function generateGUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -11,11 +16,11 @@
   function getCurrentDateTimeMinute() {
     var now = new Date();
     var pad = n => n < 10 ? '0' + n : n;
-    return now.getFullYear().toString() +
-      pad(now.getMonth() + 1) +
-      pad(now.getDate()) +
-      pad(now.getHours()) +
-      pad(now.getMinutes());
+    return now.getUTCFullYear().toString() +
+      pad(now.getUTCMonth() + 1) +
+      pad(now.getUTCDate()) +
+      pad(now.getUTCHours()) +
+      pad(now.getUTCMinutes());
   }
 
   // Generates the request key: GUID + datetime (minute)

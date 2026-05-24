@@ -1,0 +1,140 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "ContactApi",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Contact": {
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactFormModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactFormModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactFormModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Contact/player-registration": {
+      "post": {
+        "tags": [
+          "Contact"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerRegistrationModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerRegistrationModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlayerRegistrationModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ContactFormModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "subject": {
+            "type": "string",
+            "nullable": true
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlayerRegistrationModel": {
+        "type": "object",
+        "properties": {
+          "playerFullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ageGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "playerRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "parentGuardianName": {
+            "type": "string",
+            "nullable": true
+          },
+          "whatsAppNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "howDidYouHearAboutUs": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Contact"
+    }
+  ]
+}

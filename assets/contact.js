@@ -42,22 +42,44 @@ function submitContactForm() {
 
   if (hasError) return;
 
-  var url = 'https://ex.bakerly.co.za/api/Contact';
+  var url = window.BASE_API_URL || 'https://localhost:7011/api/Contact';
+  var path = '/api/Contact';
   var data = {
-    name: name,
-    emailAddress: email,
-    phoneNumber: phone,
-    subject: 'Strike Zone website contact form message',
-    message: message
+    Name: name,
+    EmailAddress: email,
+    PhoneNumber: phone,
+    Subject: 'Strike Zone website contact form message',
+    Message: message
   };
 
   var requestKey = window.generateRequestKey();
-  var secret = window.HMAC_SECRET || prompt('Enter HMAC secret (for demo only):');
-  var timestamp = Date.now().toString();
-  var message = 'POST' + url + JSON.stringify(data) + timestamp;
+  var secret = window.HMAC_SECRET;
+  var timestamp = (Date.now() + (new Date().getTimezoneOffset() * 60000)).toString(); // UTC Unix ms
+  // Stable JSON stringify (sorted keys, no spaces)
+  function stableStringify(obj) {
+    return '{' + Object.keys(obj).sort().map(k => '"' + k + '"' + ':' + JSON.stringify(obj[k])).join(',') + '}';
+  }
+  var jsonPayload = stableStringify(data);
+  var message = 'POST' + path + jsonPayload + timestamp;
+  console.log('HMAC message string:', message);
+  console.log('JSON payload:', jsonPayload);
+  console.log('Timestamp:', timestamp);
+  console.log('Secret:', secret);
   // Dynamically load hmac.js if not already loaded
   function sendRequest(signature) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+      'X-Request-Key': requestKey,
+      'X-Timestamp': timestamp,
+      'X-Signature': signature
+    };
+    console.log("Headers:", headers);
     fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(data)
+    })
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
